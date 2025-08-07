@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himalayan Nepalese & Indian Cuisine - Food Truck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f6f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .restaurant-description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hours-location {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .info-card h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            background: #2C1810;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-top: 3px solid #FFD700;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            background: #8B4513;
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #8B4513;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .section-title::after {
+            content: '❋';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f8f6f0;
+            color: #FFD700;
+            font-size: 1.5rem;
+            padding: 0 10px;
+        }
+
+        .menu-section {
+            background: #fff;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-left: 5px solid #8B4513;
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-items {
+            padding: 2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            border-color: #8B4513;
+        }
+
+        .dish-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 3px solid #FFD700;
+            flex-shrink: 0;
+        }
+
+        .item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-info h3 {
+            color: #8B4513;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .item-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8B4513;
+            text-align: right;
+            margin-top: auto;
+        }
+
+        .special-note {
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            margin: 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-note {
+            background: #FFF8DC;
+            border: 2px solid #FFD700;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: #8B4513;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #2C1810 0%, #1A0F0A 100%);
+            color: #fff;
+            padding: 4rem 0;
+            margin-top: 3rem;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+            border-color: #FFD700;
+        }
+
+        .contact-card h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .phone-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #32CD32;
+            text-decoration: none;
+            display: block;
+            margin: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .phone-number:hover {
+            color: #228B22;
+        }
+
+        footer {
+            background: #1A0F0A;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            border-top: 3px solid #FFD700;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 0.8rem;
+            }
+
+            nav a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .dish-image {
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+
+            .item-price {
+                text-align: center;
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .highlight {
+            background: #FFD700;
+            color: #8B4513;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .intro-section {
+            background: #fff;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 5px solid #8B4513;
+        }
+
+        .intro-section h2 {
+            color: #8B4513;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        .call-to-order {
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 3px solid #FFD700;
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .call-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phone-number-large {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .phone-number-large:hover {
+            color: #FFD700;
+            transform: scale(1.05);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .call-content p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .header-right {
+            flex: 0 0 auto;
+            margin-left: 2rem;
+        }
+
+        .call-to-order-header {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid #FFD700;
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .call-to-order-header h3 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phone-number-header {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #32CD32;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .phone-number-header:hover {
+            color: #228B22;
+        }
+
+        .call-to-order-header p {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-right {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .call-to-order-header {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left">
+                    <h1 class="logo">🏔️ HIMALAYAN</h1>
+                    <p class="tagline">NEPALESE & INDIAN CUISINE</p>
+                </div>
+                <div class="header-right">
+                    <div class="call-to-order-header">
+                        <h3>📞 Call to Order</h3>
+                        <a href="tel:+1-512-555-0123" class="phone-number-header">(512) 555-0123</a>
+                        <p>Call ahead to avoid the wait!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="restaurant-description">
+                <p>Rolling through San Marcos with authentic flavors from the heart of the Himalayas. Traditional Nepali and Indian Cuisine prepared daily with the freshest ingredients by dedicated chefs in our mobile kitchen. We welcome you to experience the mouth-watering aroma and flavors of our curries, warm handmade naan, sizzling tandoori specialties, and more.</p>
+            </div>
+
+            <div class="hours-location">
+                <div class="info-card">
+                    <h3>📅 OPERATING HOURS</h3>
+                    <p><strong>Monday - Saturday:</strong> 12:00 PM - 9:00 PM</p>
+                    <p><strong>Sunday:</strong> CLOSED</p>
+                </div>
+                <div class="info-card">
+                    <h3>📍 FIND OUR TRUCK</h3>
+                    <p>115 Wonder World Drive<br>San Marcos, TX 78666</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Mobile kitchen serving fresh, authentic cuisine</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#appetizers">Appetizers</a></li>
+                <li><a href="#main-courses">Main Courses</a></li>
+                <li><a href="#vegetarian">Vegetarian</a></li>
+                <li><a href="#dumplings">Dumplings</a></li>
+                <li><a href="#biryani">Biryani</a></li>
+                <li><a href="#rice-noodles">Rice & Noodles</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Our Story Section -->
+        <section id="story" class="intro-section">
+            <h2>Our Story</h2>
+            <p>Experience authentic Nepali & Indian cuisine from our mobile kitchen. We bring traditional recipes passed down through generations, prepared with the same dedication and authenticity as the finest restaurants. Our food truck delivers the rich cultural heritage of Himalayan cooking directly to the streets of San Marcos, using only the freshest ingredients and time-honored cooking methods.</p>
+        </section>
+
+        <!-- Appetizers -->
+        <section id="appetizers">
+            <div class="section-title">
+                <h2>Appetizers</h2>
+                <p>Traditional starters to awaken your palate</p>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-header">🥟 Authentic Starters</div>
+                <div class="menu-items">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=300&fit=crop" alt="Veggie Samosa" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veggie Samosa</h3>
+                                    <p class="item-description">Traditional pastries stuffed with seasoned potatoes and green peas, served with mint chutney</p>
+                                </div>
+                                <div class="item-price">$6.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Veg Pakora Edit.jpg" alt="Veg Pakora" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Pakora</h3>
+                                    <p class="item-description">Mixed vegetables coated with chickpea batter & deep fried, comes with tamarind sauce</p>
+                                </div>
+                                <div class="item-price">$6.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Himalayan Cauliflower.jpg" alt="Himalayan Cauliflower" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Himalayan Cauliflower</h3>
+                                    <p class="item-description">Crispy fried cauliflower made with sweet chilly garlic sauce</p>
+                                </div>
+                                <div class="item-price">$6.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Masala Wings.jpeg" alt="Masala Wings" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Masala Wings</h3>
+                                    <p class="item-description">Deep fried chicken wings mixed with sweet chilly garlic sauce</p>
+                                </div>
+                                <div class="item-price">$9.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chicken Chilli Edit.jpg" alt="Chicken 65" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken 65</h3>
+                                    <p class="item-description">Deep fried marinated chicken with curry leaves and green chillies</p>
+                                </div>
+                                <div class="item-price">$9.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop" alt="Himalayan Delights Platter" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Himalayan Delights Platter</h3>
+                                    <p class="item-description">A vibrant collection of Veg Samosa, crispy Himalayan Cauliflower, golden Veg Pakora & fried Veg momo</p>
+                                </div>
+                                <div class="item-price">$8.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Courses -->
+        <section id="main-courses">
+            <div class="section-title">
+                <h2>Main Courses</h2>
+                <p>Authentic curries and traditional specialties</p>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-header">🍖 Non-Vegetarian Entrees</div>
+                <div class="menu-items">
+                    <div class="price-note">
+                        <span class="highlight">CHICKEN $14.99</span> &nbsp;&nbsp; 
+                        <span class="highlight">LAMB/GOAT $15.99</span> &nbsp;&nbsp; 
+                        <span class="highlight">SHRIMP $16.99</span>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="Menu Photos/Tikka Masala Edit.jpg" alt="Tikka Masala" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Tikka Masala</h3>
+                                    <p class="item-description">Rich, creamy tomato sauce enveloping tender marinated meat, bursting with aromatic spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Butter Masala Edit.jpg" alt="Butter Masala" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Butter Masala</h3>
+                                    <p class="item-description">Tender meat simmered in velvety tomato and buttery cream sauce seasoned with aromatic spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&h=300&fit=crop" alt="Korma" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Korma</h3>
+                                    <p class="item-description">Fresh & tender meat simmered in rich, creamy onion sauce infused with aromatic spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=300&fit=crop" alt="Coconut Curry" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Coconut Curry</h3>
+                                    <p class="item-description">Succulent chunks of tender meat simmered in luscious coconut milk with vibrant spices & herbs</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chicken Chilli Edit.jpg" alt="Chicken Chilly" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Chilly</h3>
+                                    <p class="item-description">Marinated fried chicken cooked with homemade sweet chilly sauce - Indo-Chinese fusion</p>
+                                </div>
+                                <div class="item-price">$13.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Himalayan Chicken Curry Edit.jpg" alt="Himalayan Chicken Curry" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Himalayan Chicken Curry</h3>
+                                    <p class="item-description">Boneless chicken cooked with tomato, ginger, garlic, onion & secret chef's spices</p>
+                                </div>
+                                <div class="item-price">$13.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Himalayan Lamb Curry.jpg" alt="Himalayan Lamb/Goat Curry" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Himalayan Lamb/Goat Curry</h3>
+                                    <p class="item-description">Boneless lamb/bone-in goat meat cooked in homemade curry with special Himalayan spices</p>
+                                </div>
+                                <div class="item-price">$14.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vegetarian Entrees -->
+        <section id="vegetarian">
+            <div class="section-title">
+                <h2>Vegetarian Entrees</h2>
+                <p>Plant-based traditional specialties</p>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-header">🥬 Vegetarian Specialties</div>
+                <div class="menu-items">
+                    <div class="price-note">
+                        <span class="highlight">ALL VEGETARIAN ENTREES - $12.99 EACH</span>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="Menu Photos/Veg Butter Masala.jpg" alt="Veg Butter Masala" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Butter Masala</h3>
+                                    <p class="item-description">Flavorful mix of veggies simmered in velvety tomato & buttery cream sauce with aromatic spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Palak Paneer.jpg" alt="Palak Paneer" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Palak Paneer</h3>
+                                    <p class="item-description">Cottage cheese cooked with green spinach, herbs & spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Mater Paneer .jpg" alt="Matar Paneer" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Matar Paneer</h3>
+                                    <p class="item-description">Cottage cheese cooked with green peas, tomato, onion, cream & spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chana Masala.jpg" alt="Chana Masala" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chana Masala</h3>
+                                    <p class="item-description">Hearty medley of chickpeas simmered in vibrant blend of tomatoes, onions & bold spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Aalu Gobi Masala.jpg" alt="Aalu Gobi Masala" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Aalu Gobi Masala</h3>
+                                    <p class="item-description">Cauliflower cooked with potato, ginger, tomato & aromatic spices</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Paneer Tikka Masala Edit.png" alt="Paneer Tikka Masala" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Paneer Tikka Masala</h3>
+                                    <p class="item-description">Cottage cheese cooked with tomatoes, spices, in rich creamy sauce</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=300&fit=crop" alt="Coconut Curry" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Coconut Curry</h3>
+                                    <p class="item-description">Fresh mixed vegetables cooked in luscious coconut milk with vibrant spices & herbs</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Gobi Manchurian.jpg" alt="Gobi Manchurian" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Gobi Manchurian</h3>
+                                    <p class="item-description">Crispy fried cauliflower made with sweet chilly garlic sauce - Indo-Chinese fusion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dumplings -->
+        <section id="dumplings">
+            <div class="section-title">
+                <h2>Dumplings</h2>
+                <p>Handcrafted Himalayan dumplings</p>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-header">🥟 Authentic Dumplings</div>
+                <div class="menu-items">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="Menu Photos/Steam Dumpling.jpg" alt="Veg Momo (Steam)" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Momo (Steam)</h3>
+                                    <p class="item-description">Steamed dumplings filled with fresh vegetables and aromatic spices, served with spicy chutney</p>
+                                </div>
+                                <div class="item-price">$11.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Steam Dumpling.jpg" alt="Chicken Momo (Steam)" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Momo (Steam)</h3>
+                                    <p class="item-description">Steamed dumplings filled with tender chicken and traditional Himalayan spices</p>
+                                </div>
+                                <div class="item-price">$12.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Fried Dumplings.jpeg" alt="Veg Momo (Fried)" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Momo (Fried)</h3>
+                                    <p class="item-description">Crispy fried vegetable dumplings with golden brown exterior and tender filling</p>
+                                </div>
+                                <div class="item-price">$12.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Fried Dumplings.jpeg" alt="Chicken Momo (Fried)" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Momo (Fried)</h3>
+                                    <p class="item-description">Crispy fried chicken dumplings with golden brown exterior and juicy filling</p>
+                                </div>
+                                <div class="item-price">$13.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chilly Dumplings.jpg" alt="Veg Momo (Chilli)" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Momo (Chilli)</h3>
+                                    <p class="item-description">Spicy vegetable dumplings tossed in homemade chilli sauce with aromatic spices</p>
+                                </div>
+                                <div class="item-price">$13.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chilly Dumplings.jpg" alt="Chicken Momo (Chilli)" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Momo (Chilli)</h3>
+                                    <p class="item-description">Spicy chicken dumplings tossed in homemade chilli sauce with aromatic spices</p>
+                                </div>
+                                <div class="item-price">$14.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biryani Special -->
+        <section id="biryani">
+            <div class="section-title">
+                <h2>Biryani Special</h2>
+                <p>Aromatic rice dishes with tender meat and fragrant spices</p>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-header">🍚 Biryani Specialties</div>
+                <div class="menu-items">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="Menu Photos/Biryani.png" alt="Veg Biryani" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Biryani</h3>
+                                    <p class="item-description">Aromatic rice with fresh vegetables, herbs, and spices - a vegetarian delight</p>
+                                </div>
+                                <div class="item-price">$13.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Biryani.png" alt="Chicken Biryani" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Biryani</h3>
+                                    <p class="item-description">Fragrant basmati rice layered with tender chicken, aromatic spices, and caramelized onions</p>
+                                </div>
+                                <div class="item-price">$14.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Biryani.png" alt="Lamb/Goat Biryani" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Lamb/Goat Biryani</h3>
+                                    <p class="item-description">Rich and flavorful biryani with tender lamb or goat meat, infused with traditional spices</p>
+                                </div>
+                                <div class="item-price">$15.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Biryani.png" alt="Shrimp Biryani" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Shrimp Biryani</h3>
+                                    <p class="item-description">Delicate shrimp biryani with succulent seafood, aromatic spices, and fragrant basmati rice</p>
+                                </div>
+                                <div class="item-price">$16.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rice & Noodles -->
+        <section id="rice-noodles">
+            <div class="section-title">
+                <h2>Rice & Noodles</h2>
+                <p>Traditional rice dishes and Indo-Chinese noodle specialties</p>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-header">🍜 Rice & Noodle Dishes</div>
+                <div class="menu-items">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="Menu Photos/Veg Fry Rice.jpg" alt="Veg Fried Rice" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Fried Rice</h3>
+                                    <p class="item-description">Stir-fried rice with fresh vegetables, soy sauce, and aromatic spices</p>
+                                </div>
+                                <div class="item-price">$12.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chicken Fried Rice.jpg" alt="Chicken Fried Rice" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Fried Rice</h3>
+                                    <p class="item-description">Stir-fried rice with tender chicken pieces, vegetables, and savory sauces</p>
+                                </div>
+                                <div class="item-price">$12.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chowmein.jpg" alt="Veg Chowmein" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Veg Chowmein</h3>
+                                    <p class="item-description">Stir-fried noodles with fresh vegetables, soy sauce, and aromatic spices</p>
+                                </div>
+                                <div class="item-price">$11.99</div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <img src="Menu Photos/Chowmein.jpg" alt="Chicken Chowmein" class="dish-image">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3>Chicken Chowmein</h3>
+                                    <p class="item-description">Stir-fried noodles with tender chicken, vegetables, and savory sauces</p>
+                                </div>
+                                <div class="item-price">$12.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Contact Us</h2>
+                    <p>Ready to experience authentic Himalayan cuisine? Find our food truck or give us a call to place your order!</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <h3>📞 Call to Order</h3>
+                            <a href="tel:+1-512-555-0123" class="phone-number">(512) 555-0123</a>
+                            <p>Call ahead to place your order and avoid the wait!</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3>📍 Visit Our Truck</h3>
+                            <p><strong>115 Wonder World Drive</strong><br>
+                            San Marcos, TX 78666</p>
+                            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">Mobile kitchen serving fresh, authentic cuisine</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3>🕒 Operating Hours</h3>
+                            <p><strong>Monday - Saturday:</strong><br>
+                            12:00 PM - 9:00 PM</p>
+                            <p><strong>Sunday:</strong> CLOSED</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Himalayan Nepalese & Indian Cuisine. All rights reserved.</p>
+                <p>Authentic flavors from the heart of the Himalayas</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
